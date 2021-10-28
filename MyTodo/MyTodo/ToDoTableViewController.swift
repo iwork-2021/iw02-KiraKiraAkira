@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ToDoTableViewController: UITableViewController {
+class ToDoTableViewController: UITableViewController{
+    
     var items:[TodoItem]=[
         TodoItem(title: "homework", isChecked: false),
         TodoItem(title: "walk dog", isChecked: true),
@@ -15,7 +16,7 @@ class ToDoTableViewController: UITableViewController {
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.prefersLargeTitles=true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,9 +45,9 @@ class ToDoTableViewController: UITableViewController {
         // Configure the cell...
         cell.title.text!=item.title
         if item.isChecked{
-            cell.status.text!="☑️"
+            cell.status.text!="✅"
         }else{
-            cell.status.text!=" "
+            cell.status.text!="☑️"
         }
         return cell
     }
@@ -90,14 +91,46 @@ class ToDoTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "addItem"{
+            let addItemViewController = segue.destination as! ItemViewController
+            addItemViewController.addItemDelegate=self
+            
+        }else if segue.identifier=="editItem"{
+            let editItemViewController = segue.destination as! ItemViewController
+            let cell=sender as! TodoTableViewCell
+            var isChecked:Bool
+            if cell.status.text!=="✅"{
+                isChecked=true
+            }else{
+                isChecked=false
+            }
+            let item = TodoItem(title: cell.title.text!, isChecked: isChecked)
+            editItemViewController.itemToEdit=item
+            editItemViewController.itemIndex=tableView.indexPath(for: cell)!.row
+            editItemViewController.editItemDelegate=self
+            
+        }
     }
-    */
+    
+    
 
+}
+extension ToDoTableViewController:AddItemDelegate{
+    func addItem(item:TodoItem)  {
+        self.items.append(item)
+        self.tableView.reloadData()
+    }
+}
+extension ToDoTableViewController:EditItemDelegate{
+    func editItem(newItem: TodoItem, itemIndex: Int) {
+        self.items[itemIndex]=newItem
+        self.tableView.reloadData()
+    }
 }

@@ -15,6 +15,7 @@
 		5270BB1B2729304800D87EE7 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5270BB1A2729304800D87EE7 /* ToDoTableViewController.swift */; };
 		5270BB1E2729308900D87EE7 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5270BB1D2729308900D87EE7 /* TodoTableViewCell.swift */; };
 		5270BB21272933F900D87EE7 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5270BB20272933F900D87EE7 /* TodoItem.swift */; };
+		5270BB24272A9CF700D87EE7 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5270BB23272A9CF700D87EE7 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5270BB1A2729304800D87EE7 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		5270BB1D2729308900D87EE7 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		5270BB20272933F900D87EE7 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		5270BB23272A9CF700D87EE7 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				5270BB1A2729304800D87EE7 /* ToDoTableViewController.swift */,
 				5270BB1D2729308900D87EE7 /* TodoTableViewCell.swift */,
 				5270BB20272933F900D87EE7 /* TodoItem.swift */,
+				5270BB23272A9CF700D87EE7 /* ItemViewController.swift */,
 			);
 			path = MyTodo;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				5270BB1B2729304800D87EE7 /* ToDoTableViewController.swift in Sources */,
 				5270BB0727292EFA00D87EE7 /* SceneDelegate.swift in Sources */,
 				5270BB1E2729308900D87EE7 /* TodoTableViewCell.swift in Sources */,
+				5270BB24272A9CF700D87EE7 /* ItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
