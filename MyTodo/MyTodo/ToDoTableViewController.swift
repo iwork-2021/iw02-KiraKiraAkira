@@ -17,11 +17,15 @@ class ToDoTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles=true
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadItems()
+        
     }
 
     // MARK: - Table view data source
@@ -49,6 +53,7 @@ class ToDoTableViewController: UITableViewController{
         }else{
             cell.status.text!="☑️"
         }
+        cell.backgroundColor=UIColor .clear
         return cell
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -132,5 +137,29 @@ extension ToDoTableViewController:EditItemDelegate{
     func editItem(newItem: TodoItem, itemIndex: Int) {
         self.items[itemIndex]=newItem
         self.tableView.reloadData()
+    }
+}
+extension ToDoTableViewController{
+    func dataFilePath() -> URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        return path!.appendingPathComponent("ToDoItems.json")
+    }
+    func saveAllItems()  {
+        do{
+            let data = try JSONEncoder().encode(items)
+            try data.write(to:dataFilePath(),options:.atomic)
+        }catch{
+            print("can't save items.")
+        }
+    }
+    func loadItems()  {
+        let path=dataFilePath()
+        if let data = try? Data(contentsOf: path){
+            do{
+                items=try JSONDecoder().decode([TodoItem].self, from: data)
+            }catch{
+                print("can't load from disk.")
+            }
+        }
     }
 }

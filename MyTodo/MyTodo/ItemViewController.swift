@@ -29,6 +29,23 @@ class ItemViewController: UIViewController {
             self.titleInput.text!=itemToEdit!.title
             self.isChecked.isOn=itemToEdit!.isChecked
         }
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = Int(screenSize.width)
+        let screenHeight = Int(screenSize.height)
+        let uiImage = UIImage(named: "itembackground")
+        let imageFrame: CGRect = CGRect(x:0, y:0, width:(screenWidth), height:Int(screenHeight))
+        let imageView = UIImageView(frame: imageFrame)
+        imageView.contentMode = UIView.ContentMode.scaleToFill
+        imageView.image = uiImage
+        self.view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
+ 
+        /*
+        let image:UIImage! = UIImage(named: "itembackground.png")
+        self.view.backgroundColor = UIColor(patternImage: image)
+ */
+
     }
     
     @IBAction func cancel(_ sender: Any) {
